@@ -1,29 +1,41 @@
-<div class="hello">
-  <h1>{{ section.settings.heading }}</h1>
+<div>
+  {% for product in collections.evidence.products %}
+    <div class="buy-now">
+      {% form 'product', product %}
+        {{ form | payment_button }}
+        {{ product.title }}
+
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+          form="{{ 'product_form_' | append: product.id }}"
+        >
+      {% endform %}
+    </div>
+  {% endfor %}
 </div>
 
-{% stylesheet %}
-.hello {
-  padding: 2rem;
-  text-align: center;
-}
-{% endstylesheet %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const e = {{ collections.evidence.products[0] | json }};
+    const k = Object.keys(e)
+    console.log(JSON.stringify(k, null, 2));
+  }
+</script>
 
-{% schema %}
-{
-  "name": "Hello World",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Hello, World!"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hello World"
-    }
-  ]
-}
-{% endschema %}
+{% stylesheet %}
+  .buy-now {
+    margin: 20px;
+  }
+
+  .shopify-payment-button {
+    display: inline-block;
+  }
+
+  shopify-accelerated-checkout {
+    --shopify-accelerated-checkout-button-block-size: 50px;
+    --shopify-accelerated-checkout-button-border-radius: 8px;
+    --shopify-accelerated-checkout-button-box-shadow: none;
+  }
+{% endstylesheet %}
