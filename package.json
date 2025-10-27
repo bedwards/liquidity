@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "scripts": {
+    "check": "shopify theme check",
+    "console": "shopify theme console",
+    "dev": "shopify theme dev",
+    "info": "shopify theme info",
+    "init": "shopify theme init",
+    "language-server": "shopify theme language-server",
+    "list": "shopify theme list",
+    "open": "shopify theme open",
+    "package": "shopify theme package",
+    "profile": "shopify theme profile",
+    "push": "shopify theme push"
+  }
+}
