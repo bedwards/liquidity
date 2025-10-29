@@ -1,0 +1,30 @@
+<div class="hello-world">
+  <h1>Hello, World!</h1>
+</div>
+
+{% stylesheet %}
+  .hello-world {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .hello-world h1 {
+    font-size: 2rem;
+    color: #333;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Hello World",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Hello World"
+    }
+  ]
+}
+{% endschema %}
